@@ -5,7 +5,7 @@ var logger = require('morgan');
 var debug = require('debug')('fileupload:server');
 var http = require('http');
 const port = 4200
-const dynemicmasters = require('dynemicmasters')
+const dynamicmasters = require('dynamicmasters')
 
 var app = express();
 
@@ -30,7 +30,7 @@ app.post('/master/create', async (req, res) => {
             code: req.body.code,
         }
         let action = 'CREATE'
-        let response = await dynemicmasters.master(action, params)
+        let response = await dynamicmasters.master(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -46,7 +46,7 @@ app.post('/master/update', async (req, res) => {
             code: req.body.code,
         }
         let action = 'UPDATE'
-        let response = await dynemicmasters.master(action, params)
+        let response = await dynamicmasters.master(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -59,7 +59,7 @@ app.post('/master/softdelete', async (req, res) => {
             id: req.body.id,
         }
         let action = 'SOFTDELETE'
-        let response = await dynemicmasters.master(action, params)
+        let response = await dynamicmasters.master(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -72,7 +72,20 @@ app.post('/master/delete', async (req, res) => {
             id: req.body.id,
         }
         let action = 'DELETE'
-        let response = await dynemicmasters.master(action, params)
+        let response = await dynamicmasters.master(action, params)
+        return res.send(response)
+    } catch (error) {
+        console.log('error', error)
+        res.send(error)
+    }
+})
+app.post('/master/view', async (req, res) => {
+    try {
+        let params = {
+            id: req.body.id,
+        }
+        let action = 'VIEW'
+        let response = await dynamicmasters.master(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -87,7 +100,7 @@ app.post('/country/create', async (req, res) => {
             code: req.body.code
         }
         let action = 'CREATE'
-        let response = await dynemicmasters.country(action, params)
+        let response = await dynamicmasters.country(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -102,7 +115,7 @@ app.post('/country/update', async (req, res) => {
             code: req.body.code
         }
         let action = 'UPDATE'
-        let response = await dynemicmasters.country(action, params)
+        let response = await dynamicmasters.country(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -115,7 +128,7 @@ app.post('/country/softdelete', async (req, res) => {
             id: req.body.id,
         }
         let action = 'SOFTDELETE'
-        let response = await dynemicmasters.country(action, params)
+        let response = await dynamicmasters.country(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -128,7 +141,20 @@ app.post('/country/delete', async (req, res) => {
             id: req.body.id,
         }
         let action = 'DELETE'
-        let response = await dynemicmasters.country(action, params)
+        let response = await dynamicmasters.country(action, params)
+        return res.send(response)
+    } catch (error) {
+        console.log('error', error)
+        res.send(error)
+    }
+})
+app.post('/country/view', async (req, res) => {
+    try {
+        let params = {
+            id: req.body.id,
+        }
+        let action = 'VIEW'
+        let response = await dynamicmasters.country(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -143,7 +169,7 @@ app.post('/state/create', async (req, res) => {
             countryId: req.body.countryId
         }
         let action = 'CREATE'
-        let response = await dynemicmasters.state(action, params)
+        let response = await dynamicmasters.state(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -158,7 +184,7 @@ app.post('/state/update', async (req, res) => {
             countryId: req.body.countryId
         }
         let action = 'UPDATE'
-        let response = await dynemicmasters.state(action, params)
+        let response = await dynamicmasters.state(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -171,7 +197,7 @@ app.post('/state/softdelete', async (req, res) => {
             id: req.body.id,
         }
         let action = 'SOFTDELETE'
-        let response = await dynemicmasters.state(action, params)
+        let response = await dynamicmasters.state(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -184,7 +210,20 @@ app.post('/state/delete', async (req, res) => {
             id: req.body.id,
         }
         let action = 'DELETE'
-        let response = await dynemicmasters.state(action, params)
+        let response = await dynamicmasters.state(action, params)
+        return res.send(response)
+    } catch (error) {
+        console.log('error', error)
+        res.send(error)
+    }
+})
+app.post('/state/view', async (req, res) => {
+    try {
+        let params = {
+            id: req.body.id,
+        }
+        let action = 'VIEW'
+        let response = await dynamicmasters.state(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -200,7 +239,7 @@ app.post('/city/create', async (req, res) => {
             countryId: req.body.countryId,
         }
         let action = 'CREATE'
-        let response = await dynemicmasters.city(action, params)
+        let response = await dynamicmasters.city(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -216,7 +255,7 @@ app.post('/city/update', async (req, res) => {
             countryId: req.body.countryId,
         }
         let action = 'UPDATE'
-        let response = await dynemicmasters.city(action, params)
+        let response = await dynamicmasters.city(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -229,7 +268,7 @@ app.post('/city/softdelete', async (req, res) => {
             id: req.body.id,
         }
         let action = 'SOFTDELETE'
-        let response = await dynemicmasters.city(action, params)
+        let response = await dynamicmasters.city(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
@@ -242,7 +281,20 @@ app.post('/city/delete', async (req, res) => {
             id: req.body.id,
         }
         let action = 'DELETE'
-        let response = await dynemicmasters.city(action, params)
+        let response = await dynamicmasters.city(action, params)
+        return res.send(response)
+    } catch (error) {
+        console.log('error', error)
+        res.send(error)
+    }
+})
+app.post('/city/view', async (req, res) => {
+    try {
+        let params = {
+            id: req.body.id,
+        }
+        let action = 'VIEW'
+        let response = await dynamicmasters.city(action, params)
         return res.send(response)
     } catch (error) {
         console.log('error', error)
